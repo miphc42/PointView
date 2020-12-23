@@ -8,6 +8,7 @@
         "default_icon": "images/icon.png",
         "default_popup": "popup.html"
     },
+    "web_accessible_resources": ["popup.js"],
     "content_scripts": [
         {
             "matches": [
@@ -18,7 +19,7 @@
                 "main.css"
             ],
             "js": [
-                "popup.js"
+                "inject.js"
             ]
         }
     ],

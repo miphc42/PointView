@@ -2,7 +2,6 @@
 // document.getElementById('activate').onclick = function (){
 
 // }
-
 // Unique ID for the className.
 var MOUSE_VISITED_CLASSNAME = 'crx_mouse_visited';
 
@@ -38,12 +37,17 @@ document.addEventListener('mousemove', function (e) {
         console.log(srcElement.href);
         
         var html = srcElement.href;
-        
-        document.body.appendChild(iframe);
-        iframe.contentWindow.document.open();
-        iframe.contentWindow.document.write(html);
-        iframe.contentWindow.document.location.href=srcElement.href;
-        iframe.contentWindow.document.close();
+        try {
+            document.body.appendChild(iframe);
+            iframe.contentWindow.document.open();
+            iframe.contentWindow.document.write(html);
+            iframe.contentWindow.document.location.href=srcElement.href;
+            iframe.contentWindow.document.close();
+          }
+          catch(err) {
+            console.log("AAA");
+          }
+       
         
 
         console.log("BBB");
