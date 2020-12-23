@@ -2,3 +2,5 @@
     background-clip: #bcd5eb!important;
     outline: 1px dashed #e9af6e!important;
 }
+iframe { width: 800px; height: 520px; border: 1px solid black; }
+iframe { zoom: 0.75; -moz-transform: scale(0.75); -moz-transform-origin: 0 0; }

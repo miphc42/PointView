@@ -1,20 +1,25 @@
 
-document.getElementById('activate').onclick = function (){
+// document.getElementById('activate').onclick = function (){
 
-}
+// }
 
 // Unique ID for the className.
 var MOUSE_VISITED_CLASSNAME = 'crx_mouse_visited';
 
 // Previous dom, that we want to track, so we can remove the previous styling.
 var prevDOM = null;
-
+var iframe = document.createElement('iframe');
 // Mouse listener for any move event on the current document.
 document.addEventListener('mousemove', function (e) {
     let srcElement = e.srcElement;
-
+    console.log(srcElement.result)
+   
+    if (prevDOM != srcElement && srcElement.nodeName != 'A'&& iframe!=null&&srcElement.nodeName !="IFRAME") {
+        iframe.remove();
+        console.log("REMOVE");
+    }
     // Lets check if our underlying element is a IMG.
-    if (prevDOM != srcElement && srcElement.nodeName == 'IMG') {
+    else if (srcElement.nodeName == 'A') {
 
         // For NPE checking, we check safely. We need to remove the class name
         // Since we will be styling the new one after.
@@ -29,6 +34,19 @@ document.addEventListener('mousemove', function (e) {
         // during the next ieration.
         prevDOM = srcElement;
         console.info(srcElement.currentSrc);
+        console.log("AAAA");
+        console.log(srcElement.href);
+        
+        var html = srcElement.href;
+        
+        document.body.appendChild(iframe);
+        iframe.contentWindow.document.open();
+        iframe.contentWindow.document.write(html);
+        iframe.contentWindow.document.location.href=srcElement.href;
+        iframe.contentWindow.document.close();
+        
+
+        console.log("BBB");
         console.dir(srcElement);
     }
 }, false);
