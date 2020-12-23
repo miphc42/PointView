@@ -8,6 +8,7 @@ var MOUSE_VISITED_CLASSNAME = 'crx_mouse_visited';
 // Previous dom, that we want to track, so we can remove the previous styling.
 var prevDOM = null;
 var iframe = document.createElement('iframe');
+var p = document.createElement('p');
 // Mouse listener for any move event on the current document.
 document.addEventListener('mousemove', function (e) {
     let srcElement = e.srcElement;
@@ -15,6 +16,7 @@ document.addEventListener('mousemove', function (e) {
    
     if (prevDOM != srcElement && srcElement.nodeName != 'A'&& iframe!=null&&srcElement.nodeName !="IFRAME") {
         iframe.remove();
+        p.remove();
         console.log("REMOVE");
     }
     // Lets check if our underlying element is a IMG.
@@ -38,11 +40,12 @@ document.addEventListener('mousemove', function (e) {
         
         var html = srcElement.href;
         try {
-            document.body.appendChild(iframe);
-            iframe.contentWindow.document.open();
-            iframe.contentWindow.document.write(html);
-            iframe.contentWindow.document.location.href=srcElement.href;
-            iframe.contentWindow.document.close();
+            document.body.appendChild(p);
+            p.innerHTML = srcElement.href;
+            // iframe.contentWindow.document.open();
+            // iframe.contentWindow.document.write(html);
+            // iframe.contentWindow.document.location.href=srcElement.href;
+            // iframe.contentWindow.document.close();
           }
           catch(err) {
             console.log("AAA");
