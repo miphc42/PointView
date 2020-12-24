@@ -4,9 +4,21 @@
 }
 iframe { width: 800px; height: 520px; border: 1px solid black; }
 iframe { zoom: 0.75; -moz-transform: scale(0.75); -moz-transform-origin: 0 0; }
+/* 
+.box{
+    display: none;
+    width: 100%;
+} */
 
-p{
-    padding: 100px;
+/* a:hover + .box,.box:hover{
+    display: block;
+    position: relative;
+    z-index: 100;
+} */
+
+#linky{
+    position: absolute;
+    /* padding: 100px;
     background-color: black;
-    margin: 100px;
+    margin: 100px; */
 }
