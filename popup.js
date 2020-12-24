@@ -9,28 +9,44 @@ var iframe = document.createElement('iframe');
 var p = document.createElement('p');
 p.id = 'linky';
 p.style.display = "inline-block";
+function upTo(el, tagName) {
+    tagName = tagName.toLowerCase();
+    if(el.nodeName=="A"){
+        return el;
+    }
+    while (el && el.parentNode) {
+      el = el.parentNode;
+      if (el.tagName && el.tagName.toLowerCase() == tagName) {
+        return el;
+      }
+      console.log("TAG",el.tagName);
+    }
+    return null;
+  }
 document.addEventListener('mousemove', function (e) {
     let srcElement = e.srcElement;
     console.log(srcElement.result)
-    
-    if(document.getElementById(srcElement.id)!=null){
-        var x = srcElement.id;
-        console.log(x);
-        var el = document.getElementById(x).parentElement.nodeName;
-        var link = document.getElementById(x).parentElement;
-        console.log("AAA");
-        console.log("ELELELLELE", el);
-    }
-    else{
-        var el = "B";
-    }
+    var x = upTo(srcElement, 'A');
+//    if(x){
+//         console.log("BPOO",document.getElementById(srcElement.id));
+//         var x = srcElement.id;
+//         console.log(x);
+//         var el = document.getElementById(x).parentElement.nodeName;
+//         var link = document.getElementById(x).parentElement;
+//         console.log("AAA");
+//         console.log("ELELELLELE", el);
+//     }
+//     else{
+//         var el = "B";
+//         var link = srcElement;
+//     }
 
-    if (prevDOM != srcElement && srcElement.nodeName != 'SPAN' && srcElement.nodeName != 'A'&& iframe!=null&&srcElement.nodeName !="IFRAME") {
+    if (x==null&&prevDOM != srcElement && srcElement.nodeName != 'SPAN' && srcElement.nodeName != 'A'&& iframe!=null&&srcElement.nodeName !="IFRAME") {
         iframe.remove();
         p.remove();
         console.log("REMOVE");
     }
-    else if (el == 'A' || srcElement.nodeName == 'A') {
+    else if (srcElement.nodeName == 'A'||x!=null) {
 
         if (prevDOM != null) {
             prevDOM.classList.remove(MOUSE_VISITED_CLASSNAME);
@@ -42,13 +58,13 @@ document.addEventListener('mousemove', function (e) {
         console.log("AAAA");
         console.log(srcElement.href);
         
-        var html = link.href;
+        var html = x.href;
         console.log(html);
         try {
             document.body.appendChild(p);
             p.style.top = e.pageY + 'px'
             p.style.left = e.pageX + 'px'
-            p.innerHTML = link.href;
+            p.innerHTML = html;
             // iframe.contentWindow.document.open();
             // iframe.contentWindow.document.write(html);
             // iframe.contentWindow.document.location.href=srcElement.href;
