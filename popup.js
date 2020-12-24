@@ -8,6 +8,8 @@ var prevDOM = null;
 var iframe = document.createElement('iframe');
 var p = document.createElement('p');
 p.id = 'linky';
+iframe.id='linky2'
+// iframe.is="x-frame-bypass"
 p.style.display = "inline-block";
 function upTo(el, tagName) {
     tagName = tagName.toLowerCase();
@@ -43,7 +45,7 @@ document.addEventListener('mousemove', function (e) {
 
     if (x==null&&prevDOM != srcElement && srcElement.nodeName != 'SPAN' && srcElement.nodeName != 'A'&& iframe!=null&&srcElement.nodeName !="IFRAME") {
         iframe.remove();
-        p.remove();
+        // p.remove();
         console.log("REMOVE");
     }
     else if (srcElement.nodeName == 'A'||x!=null) {
@@ -62,13 +64,16 @@ document.addEventListener('mousemove', function (e) {
         console.log(html);
         try {
             document.body.appendChild(p);
-            p.style.top = e.pageY + 'px'
-            p.style.left = e.pageX + 'px'
-            p.innerHTML = html;
-            // iframe.contentWindow.document.open();
-            // iframe.contentWindow.document.write(html);
-            // iframe.contentWindow.document.location.href=srcElement.href;
-            // iframe.contentWindow.document.close();
+            // p.style.top = e.pageY + 'px'
+            // p.style.left = e.pageX + 'px'
+            // p.innerHTML = html;
+            document.body.appendChild(iframe);
+            iframe.style.top = e.pageY + 'px'
+            iframe.style.left = e.pageX + 'px'
+            iframe.contentWindow.document.open();
+            iframe.contentWindow.document.write(html);
+            iframe.contentWindow.document.location.href=html;
+            iframe.contentWindow.document.close();
           }
           catch(err) {
             console.log("AAA");
