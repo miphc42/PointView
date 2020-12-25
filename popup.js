@@ -11,6 +11,8 @@ p.id = 'linky';
 iframe.id='linky2'
 // iframe.is="x-frame-bypass"
 p.style.display = "inline-block";
+
+past = true
 function upTo(el, tagName) {
     tagName = tagName.toLowerCase();
     if(el.nodeName=="A"){
@@ -26,6 +28,7 @@ function upTo(el, tagName) {
     return null;
   }
 document.addEventListener('mousemove', function (e) {
+    console.log(e.pageX, e.pageY)
     let srcElement = e.srcElement;
     console.log(srcElement.result)
     var x = upTo(srcElement, 'A');
@@ -44,12 +47,13 @@ document.addEventListener('mousemove', function (e) {
 //     }
 
     if (x==null&&prevDOM != srcElement && srcElement.nodeName != 'SPAN' && srcElement.nodeName != 'A'&& iframe!=null&&srcElement.nodeName !="IFRAME") {
+       
+        past = true;
         iframe.remove();
         // p.remove();
         console.log("REMOVE");
     }
-    else if (srcElement.nodeName == 'A'||x!=null) {
-
+    else if (past&&(srcElement.nodeName == 'A'||x!=null)) {
         if (prevDOM != null) {
             prevDOM.classList.remove(MOUSE_VISITED_CLASSNAME);
         }
@@ -64,21 +68,28 @@ document.addEventListener('mousemove', function (e) {
         console.log(html);
         try {
             document.body.appendChild(p);
-            // p.style.top = e.pageY + 'px'
-            // p.style.left = e.pageX + 'px'
-            // p.innerHTML = html;
+            p.style.top = e.pageY + 'px'
+            p.style.left = e.pageX + 'px'
+            p.innerHTML = html;
+            console.log(e.pageX, e.pageY);
             document.body.appendChild(iframe);
-            iframe.style.top = e.pageY + 'px'
-            iframe.style.left = e.pageX + 'px'
-            iframe.contentWindow.document.open();
-            iframe.contentWindow.document.write(html);
-            iframe.contentWindow.document.location.href=html;
-            iframe.contentWindow.document.close();
+            
+            
+            console.log("BOBO O")
+        //     console.log(e.clientX + 'px', e.clientY + 'px' )
+        //     iframe.contentWindow.document.open();
+        //     iframe.contentWindow.document.write(html);
+        //     iframe.contentWindow.document.location.href=html;
+        //    iframe.contentWindow.document.close();
+        //    iframe.style.top = e.pageY + 'px'
+        //     iframe.style.left = e.pageX  +'px'
+            console.log("EEEEEEEEEEE", e.pageX+'px',e.pageY+ 'px');
+            console.log("IFRAMEMMEME", iframe.style.left +'px', iframe.style.top+'px');
           }
           catch(err) {
             console.log("AAA");
           }
-       
+          past = false
         
 
         console.log("BBB");
