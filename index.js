@@ -4,51 +4,6 @@
 // }
 var check = true;
 
-document.addEventListener("DOMContentLoaded",function (){
-  
-  chrome.storage.local.get(null,function (obj){
-    console.log(JSON.stringify(obj));
-      var x = JSON.parse(JSON.stringify(obj))['onoroff'];
-      console.log(x);
-      check = x;
-      if(x){
-        document.getElementsByTagName("html")[0].style.backgroundColor =  '#B76FB7';
-        document.getElementById('switchy').checked = false;
-      }else{
-        document.getElementsByTagName("html")[0].style.backgroundColor = '#7FBF7F';
-        document.getElementById('switchy').checked = true;
-      }
-  });
-  document.getElementById('switchy').onclick = function(){
-    console.log("fdsaf")
-    if(check){
-    document.getElementsByTagName("html")[0].style.backgroundColor = '#7FBF7F';
-    check = false;
-    console.log("AAAAFASHFJKAHFJKAHF");
-    chrome.storage.local.clear();
-    chrome.storage.local.set({"onoroff":false},function (){
-      console.log("Storage Succesful");
-    });
-    var s = document.createElement('script');
-    s.src = chrome.runtime.getURL('index.js');
-        s = function() {
-            this.remove();
-        };
-        
-    (document.head || document.documentElement).appendChild(s);
-    }else{
-        document.getElementsByTagName("html")[0].style.backgroundColor =  '#B76FB7';
-        check = true;
-        console.log("PPPPP")
-        chrome.storage.local.clear();
-        chrome.storage.local.set({"onoroff":true},function (){
-          console.log("Storage Succesful");
-        });
-    }
-}
-
-});
-
 var MOUSE_VISITED_CLASSNAME = 'crx_mouse_visited';
 
 var prevDOM = null;
@@ -82,7 +37,6 @@ function upTo(el, tagName) {
 
 
 function mouseTrack(e){
-  if(!check){
     let srcElement = e.srcElement;
     var x = upTo(srcElement, 'A');
     if (x==null&&prevDOM != srcElement && srcElement.nodeName != 'SPAN' && srcElement.nodeName != 'A'&& iframe!=null&&srcElement.nodeName !="IFRAME") {
@@ -116,5 +70,4 @@ function mouseTrack(e){
           past = false
         console.dir(srcElement);
     }
-  }
 }

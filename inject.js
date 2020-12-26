@@ -1,6 +1,16 @@
 var s = document.createElement('script');
-s.src = chrome.runtime.getURL('popup.js');
-s.onload = function() {
-    this.remove();
-};
-(document.head || document.documentElement).appendChild(s);
+  
+chrome.storage.local.get(null,function (obj){
+    console.log(JSON.stringify(obj));
+      var x = JSON.parse(JSON.stringify(obj))['onoroff'];
+      console.log(x);
+      check = x;
+      if(!x){
+        s.src = chrome.runtime.getURL('index.js');
+        s.onload = function() {
+            this.remove();
+        };
+        
+        (document.head || document.documentElement).appendChild(s);
+      }
+  });
