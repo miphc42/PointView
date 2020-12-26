@@ -3,10 +3,12 @@ var MOUSE_VISITED_CLASSNAME = 'crx_mouse_visited';
 var prevDOM = null;
 var iframe = document.createElement('iframe');
 var p = document.createElement('p');
+var div = document.createElement('div');
 p.id = 'linky';
 iframe.id='linky2'
-p.style.display = "inline-block";
 
+p.style.display = "inline-block";
+div.id = 'divvy';
 past = true
 function upTo(el, tagName) {
     tagName = tagName.toLowerCase();
@@ -33,6 +35,7 @@ function mouseTrack(e){
     if (x==null&&prevDOM != srcElement && srcElement.nodeName != 'SPAN' && srcElement.nodeName != 'A'&& iframe!=null&&srcElement.nodeName !="IFRAME") {
         past = true;
         iframe.remove();
+        div.remove();
         p.remove();
     }
     else if (past&&(srcElement.nodeName == 'A'||x!=null)) {
@@ -47,13 +50,19 @@ function mouseTrack(e){
             // p.style.top = e.pageY + 'px'
             // p.style.left = e.pageX + 'px'
             // p.innerHTML = html;
+            
             document.body.appendChild(iframe);
+            document.body.appendChild(div);
             iframe.contentWindow.document.open();
             iframe.contentWindow.document.write(html);
             iframe.contentWindow.document.location.href=html;
             iframe.contentWindow.document.close();
             iframe.style.top = e.pageY + 'px'
             iframe.style.left = e.pageX  +'px'
+            div.style.top = e.pageY + 'px'
+            div.style.left = e.pageX  +'px'
+
+            
           }
           catch(err) {
             console.log("Errored");

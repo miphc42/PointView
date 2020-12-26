@@ -1,4 +1,22 @@
 #linky2{
     position: absolute;
     background-color: white;
+    height:600px;
+    width:100%;
+    margin:0px; 
+    top:0px; 
+        -webkit-transform: scale(0.30);
+        -webkit-transform-origin: 0 0;
+    z-index:2300;
+}
+#divvy{
+    position: absolute;
+    /* background-color: white; */
+    height:600px;
+    width:100%;
+    margin:0px; 
+    top:0px; 
+        -webkit-transform: scale(0.30);
+        -webkit-transform-origin: 0 0;
+    z-index:2300;
 }

@@ -12,15 +12,19 @@
       padding: 0;
   }
   h3{
-    margin-left: 60px;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
   }
-  #linkk{
+  /* #linkk{
       margin-left: 60px;
       left: 110px;
-  }
+  } */
   .container {
     position: relative;
     width: 50%;
+    text-align: center;
+    align-items: center;
   }
   #imagy {
     width: 100%;

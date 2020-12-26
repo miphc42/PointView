@@ -3,9 +3,9 @@
     "name": "PointView",
     "description": "Hover over links to see a preview",
     "version": "1.0.0",
-    "icons": {"128": "images/icon_128.png"},
+    "icons": {"128": "images/capturepoint.png"},
     "browser_action": {
-        "default_icon": "images/icon.png",
+        "default_icon": "images/capturepoint.png",
         "default_popup": "popup.html"
     },
     "background":{
