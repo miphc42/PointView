@@ -9,10 +9,10 @@
         "default_popup": "popup.html"
     },
     "background":{
-        "scripts":["background.js"],
+        "scripts":["scripts/background.js"],
         "persistent": false
     },
-    "web_accessible_resources": ["popup.js","index.js"],
+    "web_accessible_resources": ["scripts/popup.js","scripts/index.js"],
     "content_scripts": [
         {
             "matches": [
@@ -23,7 +23,7 @@
                 "main.css"
             ],
             "js": [
-                "inject.js"
+                "scripts/inject.js"
             ],
             "run_at":"document_start"
         }

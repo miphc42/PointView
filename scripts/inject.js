@@ -6,7 +6,7 @@ chrome.storage.local.get(null,function (obj){
       console.log(x);
       check = x;
       if(!x){
-        s.src = chrome.runtime.getURL('index.js');
+        s.src = chrome.runtime.getURL('scripts/index.js');
         s.onload = function() {
             this.remove();
         };
