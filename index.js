@@ -1,9 +1,3 @@
-
-// document.getElementById('activate').onclick = function (){
-
-// }
-var check = true;
-
 var MOUSE_VISITED_CLASSNAME = 'crx_mouse_visited';
 
 var prevDOM = null;
@@ -11,7 +5,6 @@ var iframe = document.createElement('iframe');
 var p = document.createElement('p');
 p.id = 'linky';
 iframe.id='linky2'
-// iframe.is="x-frame-bypass"
 p.style.display = "inline-block";
 
 past = true
@@ -31,9 +24,7 @@ function upTo(el, tagName) {
   }
 
 
-
   document.addEventListener("mousemove", mouseTrack);
-
 
 
 function mouseTrack(e){
