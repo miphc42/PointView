@@ -11,10 +11,22 @@
       margin: 0;
       padding: 0;
   }
+  h3{
+    margin-left: 60px;
+  }
   #linkk{
       margin-left: 60px;
       left: 110px;
   }
+  .container {
+    position: relative;
+    width: 50%;
+  }
+  #imagy {
+    width: 100%;
+    height: auto;
+  }
+  
   .vert {
     display: table;
     left: 0px;

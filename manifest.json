@@ -20,7 +20,7 @@
                 "https://*/*"
             ],
             "css": [
-                "main.css"
+                "style/style.css"
             ],
             "js": [
                 "scripts/inject.js"
